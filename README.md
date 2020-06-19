@@ -1,4 +1,4 @@
-# SXL - Spatially explicit learning of geographic patterns with auxiliary tasks
+# SXL - Spatially explicit learning of geographic processes with auxiliary tasks
 
 ![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/3.PNG)
 
