@@ -2,6 +2,7 @@
 
 ![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/3.PNG)
 
+
 This repository provides complementary code and data for our paper "*SXL: Spatially explicit learning of geographic processes with auxiliary tasks*" ([https://arxiv.org/abs/2006.10461](https://arxiv.org/abs/2006.10461))
 
 With **SXL**, models learn spatial autocorrelation patterns in the data (at different resolutions) alongside the primary predictive or generative modeling task. These auxiliary tasks increase model performance and are easy to integrate into different model types and architectures. How does this work? Read on! Want to try it out straight away? Jump to [Examples](##Examples).
@@ -91,6 +92,10 @@ for e in range(num_epochs):
 ```
 
 Here, `lamda_` = λ, the auxiliary loss weight parameter. In our experiments, we work with lambda values [0.01, 0.1, 1], however we also provide an Example notebook showing how λ can be learned throughout model training. 
+
+How does it work? Like a charm! Below are some interpolation examples from our *CNN MAT*, compared to the "Vanilla" CNN and common spatial interpolation benchmarks.
+
+![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/4.PNG)
 
 ### Compute **MRES-MAT**
 
