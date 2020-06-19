@@ -19,13 +19,13 @@ We propose the use of a spatial autocorrelation embedding, the *local Moran's I 
 We also propose a novel, *multi-resolution local Moran's I statistic* to capture spatial dependencies at different spatial scales. This is outlined in the figure above. The multi-resolution local Moran's I can be used for a set of auxiliary tasks; we refer to this approach as Multi-Resolution Moran's Auxiliary Task (**MRES-MAT**).
 
 Both approaches can easily be integrated into predictive and generative models; for example GANs, as outlined below.
-To integrate the auxiliary task(s) into the model loss, we multiply the auxiliary losses by a weight parameter $$\lambda$$. For a more in-depth description of **SXL**, please see the paper.
+To integrate the auxiliary task(s) into the model loss, we multiply the auxiliary losses by a weight parameter λ. For a more in-depth description of **SXL**, please see the paper.
 
 ![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/2.PNG)
 
 ## SXL in `PyTorch`
 
-This repository provides a `PyTorch` implementation of **SXL**. Let us briefly demonstrate how it works, using a simple example: a CNN conducting a spatial interpolation (regression) task upscaling a $$32 \times 32$$ spatial pattern to a $$64 \times 64$$ spatial pattern. First, we need to define a multitask CNN:
+This repository provides a `PyTorch` implementation of **SXL**. Let us briefly demonstrate how it works, using a simple example: a CNN conducting a spatial interpolation (regression) task upscaling a 32 x 32 spatial pattern to a 64 x 64 spatial pattern. First, we need to define a multitask CNN:
 
 ```python
 class CNN_MAT_32(nn.Module):
@@ -64,7 +64,7 @@ class CNN_MAT_32(nn.Module):
         return y_, mi_y_
 ```
 
-Here, the `conv_net` module is *shared* between tasks, i.e. the CNN learns a shared representation of the data AND its local Moran's I embedding. The output layers (`output_t1 / output_t2`) are *task-specific*. In the `forward()` method, we can see the function `batch_lw_tensor_local_moran()` used to compute the local Moran's I for a whole data batch, taking in a sparse spatial weight matrix `w_sparse` according to the input size $$32 \times 32$$ and the current minibatch $$x$$. Our multi-task CNN has two outputs, the predicted $$64 \times 64$$ matrix and its predicted local Moran's I embedding.
+Here, the `conv_net` module is *shared* between tasks, i.e. the CNN learns a shared representation of the data AND its local Moran's I embedding. The output layers (`output_t1 / output_t2`) are *task-specific*. In the `forward()` method, we can see the function `batch_lw_tensor_local_moran()` used to compute the local Moran's I for a whole data batch, taking in a sparse spatial weight matrix `w_sparse` according to the input size 32 x 32 and the current minibatch *x*. Our multi-task CNN has two outputs, the predicted 64 x 64 matrix and its predicted local Moran's I embedding.
 
 We can integrate the outputs into a multi-taks loss as follows:
 
@@ -90,12 +90,23 @@ for e in range(num_epochs):
       CNN_opt.step()
 ```
 
-Here, `lamda_` $$= \lambda$$, the auxiliary loss weight parameter. In our experiments, we work with lambda values $$[0.01, 0.1, 1]$$, however we also provide an Example notebook showing how $$\lambda$$ can be learned throughout model training. 
+Here, `lamda_` = λ, the auxiliary loss weight parameter. In our experiments, we work with lambda values [0.01, 0.1, 1], however we also provide an Example notebook showing how λ can be learned throughout model training. 
 
+### Compute **MRES-MAT**
 
-Everything done! Does it work? Like a charm! Here is some output from a spatial interpolation task using our **CNN-MAT**, compared to the "Vanilla" CNN and some common spatial interpolation benchmarks
+To also quickly demonstrate how to compute the multi-resolution local Moran's I, let's assume we have an input of size 32 x 32 and want to compute the Moran's I at the original resolution and downsampled by factor 2 and 4. To do this, we first downsample the input (using average pooling operations), then compute the local Moran's I statistic and upsample again (using nearest neighbor interpolation) to the original 32 x 32 input size. Given an input batch x, the according `PyTorch` code looks like this:
 
-![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/4.PNG)
+```python
+x_d1 = downsample(x)
+x_d2 = downsample(x_d1)
+mi_x = batch_lw_tensor_local_moran(x.detach().cpu(),w_sparse_32)
+mi_x_d1 = batch_lw_tensor_local_moran(x_d1.detach().cpu(),w_sparse_16)
+mi_x_d2 = batch_lw_tensor_local_moran(x_d2.detach().cpu(),w_sparse_8)
+mi_x_d1 = nn.functional.interpolate(mi_x_d1,scale_factor=2,mode="nearest")
+mi_x_d2 = nn.functional.interpolate(mi_x_d2,scale_factor=4,mode="nearest")
+```
+
+`mi_x` is the local Moran's I of the original data, `mi_x_d1` and `mi_x_d2` the coarsened Moran's I (factor 2 and 4).
 
 ## Examples
 
