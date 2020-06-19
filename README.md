@@ -119,7 +119,7 @@ We currently provide the following examples for you to test out:
  - **Example 1:** Generative modeling with **MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example1_Generative_Modeling_with_MAT.ipynb)
  - **Example 2:** Generative modeling with **MRES-MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example2_Generative_Modeling_with_MRES_MAT.ipynb)
  - **Example 3:** Predictive modeling (spatial interpolation) with **MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example3_Spatial_Interpolation.ipynb)
- - **Example 4:** Learning the optimal auxiliary loss weight $$\lambda$$. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example4_Learning_Lambda.ipynb)
+ - **Example 4:** Learning the optimal auxiliary loss weight λ. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example4_Learning_Lambda.ipynb)
 
 ## Citation
 
