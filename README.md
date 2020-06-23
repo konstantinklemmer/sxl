@@ -5,7 +5,7 @@
 
 This repository provides complementary code and data for our paper "*SXL: Spatially explicit learning of geographic processes with auxiliary tasks*" ([https://arxiv.org/abs/2006.10461](https://arxiv.org/abs/2006.10461))
 
-With **SXL**, models learn spatial autocorrelation patterns in the data (at different resolutions) alongside the primary predictive or generative modeling task. These auxiliary tasks increase model performance and are easy to integrate into different model types and architectures. How does this work? Read on! Want to try it out straight away? Jump to [Examples](##Examples).
+With **SXL**, models learn spatial autocorrelation patterns in the data (at different resolutions) alongside the primary predictive or generative modeling task. These auxiliary tasks increase model performance and are easy to integrate into different model types and architectures. How does this work? Read on! Want to try it out straight away? Jump to [Examples](#Examples).
 
 ## Structure
 
