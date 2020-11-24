@@ -91,7 +91,7 @@ for e in range(num_epochs):
       CNN_opt.step()
 ```
 
-Here, `lamda_` = λ, the auxiliary loss weight parameter. In our experiments, we work with lambda values [0.01, 0.1, 1], however we also provide an Example notebook showing how λ can be learned throughout model training. 
+Here, `lamda_` = λ, the auxiliary loss weight parameter. In our experiments, we work with lambda values [0.01, 0.1, 1], however we also provide an Example notebook showing how each tasks uncertainty can be used to weight the losses.
 
 How does it work? Like a charm! Below are some interpolation examples from our *CNN MAT*, compared to the "Vanilla" CNN and common spatial interpolation benchmarks.
 
@@ -119,7 +119,7 @@ We currently provide the following examples for you to test out:
  - **Example 1:** Generative modeling with **MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example1_Generative_Modeling_with_MAT.ipynb)
  - **Example 2:** Generative modeling with **MRES-MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example2_Generative_Modeling_with_MRES_MAT.ipynb)
  - **Example 3:** Predictive modeling (spatial interpolation) with **MAT** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example3_Spatial_Interpolation.ipynb)
- - **Example 4:** Learning the optimal auxiliary loss weight λ. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example4_Learning_Lambda.ipynb)
+ - **Example 4:** Generative modeling with **MRES-MAT** and uncertainty weights. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/sxl/blob/master/examples/Example4_Uncertainty_Weights.ipynb)
 
 ## Citation
 
