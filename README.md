@@ -3,7 +3,7 @@
 ![](https://raw.githubusercontent.com/konstantinklemmer/sxl/master/img/3.PNG)
 
 
-This repository provides complementary code and data for our paper "*SXL: Spatially explicit learning of geographic processes with auxiliary tasks*" ([https://arxiv.org/abs/2006.10461](https://arxiv.org/abs/2006.10461v2))
+This repository provides complementary code and data for our paper "*Auxiliary-task learning for geographic data with autoregressive embeddings*" ([Long version](https://arxiv.org/abs/2006.10461v2), [Short version](https://dl.acm.org/doi/10.1145/3474717.3483922))
 
 With **SXL**, models learn spatial autocorrelation patterns in the data (at different resolutions) alongside the primary predictive or generative modeling task. These auxiliary tasks increase model performance and are easy to integrate into different model types and architectures. How does this work? Read on! Want to try it out straight away? Jump to [Examples](#Examples).
 
@@ -124,12 +124,20 @@ We currently provide the following examples for you to test out:
 ## Citation
 
 ```
-@misc{klemmer2020sxl,
-    title={SXL: Spatially explicit learning of geographic processes with auxiliary tasks},
-    author={Konstantin Klemmer and Daniel B. Neill},
-    year={2020},
-    eprint={2006.10461},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG}
+@inproceedings{
+    10.1145/3474717.3483922,
+    author = {Klemmer, Konstantin and Neill, Daniel B.},
+    title = {Auxiliary-Task Learning for Geographic Data with Autoregressive Embeddings},
+    year = {2021},
+    isbn = {9781450386647},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3474717.3483922},
+    doi = {10.1145/3474717.3483922},
+    booktitle = {Proceedings of the 29th International Conference on Advances in Geographic Information Systems},
+    pages = {141–144},
+    numpages = {4},
+    location = {Beijing, China},
+    series = {SIGSPATIAL '21}
 }
 ```
