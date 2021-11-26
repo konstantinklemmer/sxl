@@ -125,7 +125,7 @@ We currently provide the following examples for you to test out:
 
 ```
 @inproceedings{
-    10.1145/3474717.3483922,
+    klemmer2021sxl,
     author = {Klemmer, Konstantin and Neill, Daniel B.},
     title = {Auxiliary-Task Learning for Geographic Data with Autoregressive Embeddings},
     year = {2021},
